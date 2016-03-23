@@ -1,0 +1,18 @@
+﻿@using CertificationApp.Domain.Entities
+@using CertificationApp.WebApp.HtmlHelpers
+@model CertificationApp.WebApp.Models.ReportListViewModel
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+@foreach (var report in @Model.Reports)
+{
+    @Html.Partial("ReportSummary", report)
+
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("ReportList", new { page = x, manager = Model.CurrentManager }))
+</div>
